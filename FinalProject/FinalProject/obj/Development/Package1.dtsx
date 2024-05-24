@@ -1,0 +1,1257 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/4/2023 10:18:14 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="N2D"
+  DTS:CreatorName="N2D\duann"
+  DTS:DTSID="{0680E842-8BEC-43E2-A85C-23832B45FF77}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5270.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{B26781FE-35ED-4A57-9E0A-9AC71D0A3FCB}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SalesOrderHeaderReason]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{CD1C5502-27DE-46D6-9164-37A6DA03BE27}"
+      DTS:ObjectName="SalesOrderHeaderReason">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\SALES\Sales.SalesOrderHeaderSalesReason.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SalesOrderID"
+              DTS:DTSID="{EF21F131-9CEE-462F-8BB6-94063F37B232}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SalesReasonID"
+              DTS:DTSID="{762B0F03-84A7-4380-9628-A1FEDAC8B389}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ModifiedDate"
+              DTS:DTSID="{AE1E9C5D-65BE-4D5C-96D9-85961301BBF8}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{FCE54F83-2E4A-407A-BDE0-7ACD341DC4D5}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\dim Sales Reason"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="dim Sales Reason"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dw].[DimSalesReason]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\dim Sales Reason.Connections[OleDbConnection]"
+                  connectionManagerID="{379FF107-CD67-425E-880A-E7D3F6465E48}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[N2D.AdventureWorksDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Output].Columns[SalesReasonKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Output].ExternalColumns[SalesReasonKey]"
+                      lineageId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Output].Columns[SalesReasonKey]"
+                      name="SalesReasonKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Output].Columns[SalesReasonID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Output].ExternalColumns[SalesReasonID]"
+                      lineageId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Output].Columns[SalesReasonID]"
+                      name="SalesReasonID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Output].Columns[SalesReasonName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Output].ExternalColumns[SalesReasonName]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Output].Columns[SalesReasonName]"
+                      name="SalesReasonName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Output].Columns[SalesReasonReasonType]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Output].ExternalColumns[SalesReasonReasonType]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Output].Columns[SalesReasonReasonType]"
+                      name="SalesReasonReasonType"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Output].ExternalColumns[SalesReasonKey]"
+                      dataType="i4"
+                      name="SalesReasonKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Output].ExternalColumns[SalesReasonID]"
+                      dataType="i4"
+                      name="SalesReasonID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Output].ExternalColumns[SalesReasonName]"
+                      dataType="wstr"
+                      length="50"
+                      name="SalesReasonName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Output].ExternalColumns[SalesReasonReasonType]"
+                      dataType="wstr"
+                      length="50"
+                      name="SalesReasonReasonType" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Error Output].Columns[SalesReasonKey]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Error Output].Columns[SalesReasonKey]"
+                      name="SalesReasonKey" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Error Output].Columns[SalesReasonID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Error Output].Columns[SalesReasonID]"
+                      name="SalesReasonID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Error Output].Columns[SalesReasonName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Error Output].Columns[SalesReasonName]"
+                      name="SalesReasonName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Error Output].Columns[SalesReasonReasonType]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Error Output].Columns[SalesReasonReasonType]"
+                      name="SalesReasonReasonType" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Merge Join 7"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join 7"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Merge Join 7.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join 7.Inputs[Merge Join Left Input].Columns[SalesReasonID]"
+                      cachedDataType="i4"
+                      cachedName="SalesReasonID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Data Flow Task\Sort by SalesReason ID 2.Outputs[Sort Output].Columns[SalesReasonID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join 7.Inputs[Merge Join Left Input].Columns[SalesReasonKey]"
+                      cachedDataType="i4"
+                      cachedName="SalesReasonKey"
+                      lineageId="Package\Data Flow Task\Sort by SalesReason ID 2.Outputs[Sort Output].Columns[SalesReasonKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Data Flow Task\Merge Join 7.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join 7.Inputs[Merge Join Right Input].Columns[Copy of SalesReasonID]"
+                      cachedDataType="i4"
+                      cachedName="Copy of SalesReasonID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Data Flow Task\Sort by SalesReason ID 1.Outputs[Sort Output].Columns[Copy of SalesReasonID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join 7.Inputs[Merge Join Right Input].Columns[SalesOrderID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SalesOrderID"
+                      lineageId="Package\Data Flow Task\Sort by SalesReason ID 1.Outputs[Sort Output].Columns[SalesOrderID]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Merge Join 7.Outputs[Merge Join Output]"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join 7.Outputs[Merge Join Output].Columns[SalesReasonKey]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Merge Join 7.Outputs[Merge Join Output].Columns[SalesReasonKey]"
+                      name="SalesReasonKey">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join 7.Inputs[Merge Join Left Input].Columns[SalesReasonKey]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join 7.Outputs[Merge Join Output].Columns[SalesOrderID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Merge Join 7.Outputs[Merge Join Output].Columns[SalesOrderID]"
+                      name="SalesOrderID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join 7.Inputs[Merge Join Right Input].Columns[SalesOrderID]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Sales Order Header Sales Reason"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Sales Order Header Sales Reason"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Sales Order Header Sales Reason.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SalesOrderHeaderReason]"
+                  connectionManagerRefId="Package.ConnectionManagers[SalesOrderHeaderReason]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Output].Columns[SalesOrderID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Output].ExternalColumns[SalesOrderID]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Output].Columns[SalesOrderID]"
+                      name="SalesOrderID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Output].Columns[SalesReasonID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Output].ExternalColumns[SalesReasonID]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Output].Columns[SalesReasonID]"
+                      name="SalesReasonID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Output].Columns[ModifiedDate]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Output].ExternalColumns[ModifiedDate]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Output].Columns[ModifiedDate]"
+                      name="ModifiedDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Output].ExternalColumns[SalesOrderID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SalesOrderID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Output].ExternalColumns[SalesReasonID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SalesReasonID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Output].ExternalColumns[ModifiedDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ModifiedDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\SalesReason ID (str) to (int)"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="SalesReason ID (str) to (int)"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\SalesReason ID (str) to (int).Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\SalesReason ID (str) to (int).Inputs[Data Conversion Input].Columns[SalesReasonID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SalesReasonID"
+                      lineageId="Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Output].Columns[SalesReasonID]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\SalesReason ID (str) to (int).Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Data Flow Task\SalesReason ID (str) to (int).Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SalesReason ID (str) to (int).Outputs[Data Conversion Output].Columns[Copy of SalesReasonID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\SalesReason ID (str) to (int).Outputs[Data Conversion Output].Columns[Copy of SalesReasonID]"
+                      name="Copy of SalesReasonID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Output].Columns[SalesReasonID]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\SalesReason ID (str) to (int).Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Data Flow Task\SalesReason ID (str) to (int).Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SalesReason ID (str) to (int).Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\SalesReason ID (str) to (int).Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SalesReason ID (str) to (int).Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\SalesReason ID (str) to (int).Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Sort by SalesOrder ID 3"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort by SalesOrder ID 3"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Sort by SalesOrder ID 3.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort by SalesOrder ID 3.Inputs[Sort Input].Columns[SalesReasonKey]"
+                      cachedDataType="i4"
+                      cachedName="SalesReasonKey"
+                      lineageId="Package\Data Flow Task\Merge Join 7.Outputs[Merge Join Output].Columns[SalesReasonKey]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort by SalesOrder ID 3.Inputs[Sort Input].Columns[SalesOrderID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SalesOrderID"
+                      lineageId="Package\Data Flow Task\Merge Join 7.Outputs[Merge Join Output].Columns[SalesOrderID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Sort by SalesOrder ID 3.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort by SalesOrder ID 3.Outputs[Sort Output].Columns[SalesReasonKey]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort by SalesOrder ID 3.Outputs[Sort Output].Columns[SalesReasonKey]"
+                      name="SalesReasonKey">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Merge Join 7.Outputs[Merge Join Output].Columns[SalesReasonKey]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort by SalesOrder ID 3.Outputs[Sort Output].Columns[SalesOrderID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sort by SalesOrder ID 3.Outputs[Sort Output].Columns[SalesOrderID]"
+                      name="SalesOrderID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Merge Join 7.Outputs[Merge Join Output].Columns[SalesOrderID]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Sort by SalesReason ID 1"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort by SalesReason ID 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Sort by SalesReason ID 1.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort by SalesReason ID 1.Inputs[Sort Input].Columns[SalesOrderID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SalesOrderID"
+                      lineageId="Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Output].Columns[SalesOrderID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort by SalesReason ID 1.Inputs[Sort Input].Columns[SalesReasonID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SalesReasonID"
+                      lineageId="Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Output].Columns[SalesReasonID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort by SalesReason ID 1.Inputs[Sort Input].Columns[ModifiedDate]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ModifiedDate"
+                      lineageId="Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Output].Columns[ModifiedDate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort by SalesReason ID 1.Inputs[Sort Input].Columns[Copy of SalesReasonID]"
+                      cachedDataType="i4"
+                      cachedName="Copy of SalesReasonID"
+                      lineageId="Package\Data Flow Task\SalesReason ID (str) to (int).Outputs[Data Conversion Output].Columns[Copy of SalesReasonID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Sort by SalesReason ID 1.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort by SalesReason ID 1.Outputs[Sort Output].Columns[SalesOrderID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sort by SalesReason ID 1.Outputs[Sort Output].Columns[SalesOrderID]"
+                      name="SalesOrderID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Output].Columns[SalesOrderID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort by SalesReason ID 1.Outputs[Sort Output].Columns[SalesReasonID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sort by SalesReason ID 1.Outputs[Sort Output].Columns[SalesReasonID]"
+                      name="SalesReasonID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Output].Columns[SalesReasonID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort by SalesReason ID 1.Outputs[Sort Output].Columns[ModifiedDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sort by SalesReason ID 1.Outputs[Sort Output].Columns[ModifiedDate]"
+                      name="ModifiedDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Output].Columns[ModifiedDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort by SalesReason ID 1.Outputs[Sort Output].Columns[Copy of SalesReasonID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort by SalesReason ID 1.Outputs[Sort Output].Columns[Copy of SalesReasonID]"
+                      name="Copy of SalesReasonID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\SalesReason ID (str) to (int).Outputs[Data Conversion Output].Columns[Copy of SalesReasonID]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Sort by SalesReason ID 2"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort by SalesReason ID 2"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Sort by SalesReason ID 2.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort by SalesReason ID 2.Inputs[Sort Input].Columns[SalesReasonKey]"
+                      cachedDataType="i4"
+                      cachedName="SalesReasonKey"
+                      lineageId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Output].Columns[SalesReasonKey]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort by SalesReason ID 2.Inputs[Sort Input].Columns[SalesReasonID]"
+                      cachedDataType="i4"
+                      cachedName="SalesReasonID"
+                      lineageId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Output].Columns[SalesReasonID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort by SalesReason ID 2.Inputs[Sort Input].Columns[SalesReasonName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="SalesReasonName"
+                      lineageId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Output].Columns[SalesReasonName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort by SalesReason ID 2.Inputs[Sort Input].Columns[SalesReasonReasonType]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="SalesReasonReasonType"
+                      lineageId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Output].Columns[SalesReasonReasonType]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Sort by SalesReason ID 2.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort by SalesReason ID 2.Outputs[Sort Output].Columns[SalesReasonKey]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort by SalesReason ID 2.Outputs[Sort Output].Columns[SalesReasonKey]"
+                      name="SalesReasonKey">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Output].Columns[SalesReasonKey]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort by SalesReason ID 2.Outputs[Sort Output].Columns[SalesReasonID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort by SalesReason ID 2.Outputs[Sort Output].Columns[SalesReasonID]"
+                      name="SalesReasonID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Output].Columns[SalesReasonID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort by SalesReason ID 2.Outputs[Sort Output].Columns[SalesReasonName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sort by SalesReason ID 2.Outputs[Sort Output].Columns[SalesReasonName]"
+                      name="SalesReasonName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Output].Columns[SalesReasonName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort by SalesReason ID 2.Outputs[Sort Output].Columns[SalesReasonReasonType]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sort by SalesReason ID 2.Outputs[Sort Output].Columns[SalesReasonReasonType]"
+                      name="SalesReasonReasonType">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Output].Columns[SalesReasonReasonType]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Data Conversion Output]"
+              endId="Package\Data Flow Task\Sort by SalesReason ID 1.Inputs[Sort Input]"
+              name="Data Conversion Output"
+              startId="Package\Data Flow Task\SalesReason ID (str) to (int).Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Flat File Source Output]"
+              endId="Package\Data Flow Task\SalesReason ID (str) to (int).Inputs[Data Conversion Input]"
+              name="Flat File Source Output"
+              startId="Package\Data Flow Task\Sales Order Header Sales Reason.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Merge Join Output]"
+              endId="Package\Data Flow Task\Sort by SalesOrder ID 3.Inputs[Sort Input]"
+              name="Merge Join Output"
+              startId="Package\Data Flow Task\Merge Join 7.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\Sort by SalesReason ID 2.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\dim Sales Reason.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Sort Output]"
+              endId="Package\Data Flow Task\Merge Join 7.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task\Sort by SalesReason ID 2.Outputs[Sort Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Sort Output1]"
+              endId="Package\Data Flow Task\Merge Join 7.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task\Sort by SalesReason ID 1.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Data Flow Task"
+          TopLeft="381.666651500597,60.666667148802" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="188,41.6"
+          Id="Package\Data Flow Task\Sort by SalesOrder ID 3"
+          TopLeft="413.796282237696,306.044447989287" />
+        <NodeLayout
+          Size="238.4,41.6"
+          Id="Package\Data Flow Task\Sales Order Header Sales Reason"
+          TopLeft="277.499991357327,60" />
+        <NodeLayout
+          Size="138.4,41.6"
+          Id="Package\Data Flow Task\Merge Join 7"
+          TopLeft="206.296290483005,306.266668223274" />
+        <NodeLayout
+          Size="197.6,41.6"
+          Id="Package\Data Flow Task\Sort by SalesReason ID 2"
+          TopLeft="60,205.200002686182" />
+        <NodeLayout
+          Size="207.2,41.6"
+          Id="Package\Data Flow Task\SalesReason ID (str) to (int)"
+          TopLeft="285.833324359523,131.40000175635" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Data Flow Task\dim Sales Reason"
+          TopLeft="79.1454801935086,124.236366779011" />
+        <NodeLayout
+          Size="197.6,41.6"
+          Id="Package\Data Flow Task\Sort by SalesReason ID 1"
+          TopLeft="294.16665736172,205.933333698379" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Sort Output]"
+          TopLeft="158.8,246.800002686182">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="94.962957149671,59.4666655370924"
+              Start="0,0"
+              End="94.962957149671,51.9666655370924">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.2722279014296" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.2722279014296"
+                    Point2="0,35.2722279014296"
+                    Point3="4,35.2722279014296" />
+                  <mssgle:LineSegment
+                    End="90.962957149671,35.2722279014296" />
+                  <mssgle:CubicBezierSegment
+                    Point1="90.962957149671,35.2722279014296"
+                    Point2="94.962957149671,35.2722279014296"
+                    Point3="94.962957149671,39.2722279014296" />
+                  <mssgle:LineSegment
+                    End="94.962957149671,51.9666655370924" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Sort Output1]"
+          TopLeft="392.96665736172,247.533333698379">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-95.7370335453821,58.7333345248954"
+              Start="0,0"
+              End="-95.7370335453821,51.2333345248954">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.8372578496237" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.8372578496237"
+                    Point2="0,34.8372578496237"
+                    Point3="-4,34.8372578496237" />
+                  <mssgle:LineSegment
+                    End="-91.7370335453821,34.8372578496237" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-91.7370335453821,34.8372578496237"
+                    Point2="-95.7370335453821,34.8372578496237"
+                    Point3="-95.7370335453821,38.8372578496237" />
+                  <mssgle:LineSegment
+                    End="-95.7370335453821,51.2333345248954" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="159.572740096754,165.836366779011">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39.3636359071718"
+              Start="0,0"
+              End="0,31.8636359071718">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.8636359071718" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Merge Join Output]"
+          TopLeft="344.696290483005,326.955558106281">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="69.0999917546908,0"
+              Start="0,0"
+              End="61.5999917546908,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="61.5999917546908,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Flat File Source Output]"
+          TopLeft="393.066657858425,101.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.8000017563504"
+              Start="0,0"
+              End="0,22.3000017563504">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.3000017563504" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="391.199990860621,173.00000175635">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32.9333319420286"
+              Start="0,0"
+              End="0,25.4333319420286">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.4333319420286" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
