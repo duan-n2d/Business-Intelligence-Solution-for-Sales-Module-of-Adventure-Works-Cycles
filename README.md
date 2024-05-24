@@ -1,4 +1,5 @@
 # Business Intelligence Solution for Sales Module of Adventure Works Cycles
+Project about Business Intelligence at UEL
 
 ## Table of content
 - [Objective](#objective)
@@ -49,6 +50,9 @@ Develop a comprehensive Business Intelligence (BI) solution to enhance sales ana
 ## Outcomes
 - Actionable Insights: Delivered through interactive dashboards, improving strategic planning and operational efficiency.
 - Improved Decision-Making: Enabled by detailed sales analysis and customer segmentation.
+
+## Resource
+Dataset [Advanture Work](https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver16&tabs=ssms)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
