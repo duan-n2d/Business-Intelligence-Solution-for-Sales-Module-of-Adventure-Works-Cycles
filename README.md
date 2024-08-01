@@ -50,7 +50,11 @@ Develop a comprehensive Business Intelligence (BI) solution to enhance sales ana
 ## Outcomes
 - Actionable Insights: Delivered through interactive dashboards, improving strategic planning and operational efficiency.
 - Improved Decision-Making: Enabled by detailed sales analysis and customer segmentation.
-![Customer Segmentation](Screenshot/Customer Segmentation.PNG)
+![customer segmentation](Screenshot/CustomerSegmentation.PNG)
+![demographic](Screenshot/Demographic.PNG)
+![period](Screenshot/Period.PNG)
+![product](Screenshot/Product.PNG)
+![sales performance](Screenshot/SalesPerformance.PNG)
 
 ## Resource
 Dataset [Advanture Work](https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver16&tabs=ssms)
